@@ -3,13 +3,16 @@ import { Link } from 'react-router-dom';
 
 function Header() {
   return (
-    <header class="header">
+    <header className="header">
       <div>BOOKSTORE CMS</div>
       <nav className="nav">
-        <Link to="/">BOOKS</Link>{' '}|{' '} 
-        <Link to="/categories">CATEGORIES</Link> 
+        <Link to="/">BOOKS</Link>
+        {' '}
+        |
+        {' '}
+        <Link to="/categories">CATEGORIES</Link>
       </nav>
-      <div class="Oval"></div>
+      <div className="Oval" />
     </header>
   );
 }

@@ -1,7 +1,7 @@
 import './App.css';
-import Header from './Header'
-import Book from './Book'
-import AddBook from './AddBook'
+import Header from './Header';
+import Book from './Book';
+import AddBook from './AddBook';
 
 function App() {
   return (
