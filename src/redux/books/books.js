@@ -5,9 +5,8 @@ let nextId = 0;
 
 export function addBookObject(title, author) {
   nextId += 1;
-  return {
-    type: ADD_BOOK, id: nextId, title, author,
-  };
+  const data = { id: nextId, title, author };
+  return { type: ADD_BOOK, payload: data };
 }
 
 export function removeBookObject(id) {
@@ -17,7 +16,7 @@ export function removeBookObject(id) {
 const bookReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_BOOK:
-      return [...state, { id: action.id, title: action.title, author: action.author }];
+      return [...state, action.payload];
     case REM_BOOK:
       return state.filter((book) => book.id !== action.id);
     default:
