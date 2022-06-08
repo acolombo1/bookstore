@@ -1,11 +1,10 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const ADD_BOOK = 'ADD_BOOK';
 const REM_BOOK = 'REM_BOOK';
 
-let nextId = 3;
-
-export function addBookObject(title, author) {
-  nextId += 1;
-  const data = { id: nextId, title, author };
+export function addBookObject(book) {
+  const data = { id: uuidv4(), title: book.title, author: book.author };
   return { type: ADD_BOOK, payload: data };
 }
 

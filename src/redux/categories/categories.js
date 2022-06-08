@@ -7,7 +7,7 @@ export function checkStatus() {
 const catReducer = (state = [], action) => {
   switch (action.type) {
     case CHK_STATUS:
-      return 'Under construction';
+      return [{ id: 0, category: 'Under construction' }];
     default:
       return state;
   }

@@ -1,24 +1,30 @@
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { addBookObject } from '../redux/books/books';
 
 function AddBook() {
   const dispatch = useDispatch();
+  const [book, updateBook] = useState({ title: '', author: '' });
+  const onTitleChange = (event) => {
+    updateBook({ ...book, title: event.target.value });
+  };
+  const onAuthorChange = (event) => {
+    updateBook({ ...book, author: event.target.value });
+  };
   return (
     <>
       <form className="addBook">
         ADD NEW BOOK
         <br />
-        <input type="text" id="title" placeholder="Book Title" name="title" />
-        <input type="text" id="author" placeholder="Author" name="author" />
+        <input value={book.title} type="text" id="title" placeholder="Book Title" name="title" onChange={onTitleChange} />
+        <input value={book.author} type="text" id="author" placeholder="Author" name="author" onChange={onAuthorChange} />
         <button
           type="button"
           onClick={() => {
-            const title = document.getElementById('title');
-            const author = document.getElementById('author');
-            if (title.value !== '' && author.value !== '') {
-              dispatch(addBookObject(title.value, author.value));
-              title.value = '';
-              author.value = '';
+            if (book.title !== '' && book.author !== '') {
+              dispatch(addBookObject(book));
+              book.title = '';
+              book.author = '';
             }
           }}
         >
