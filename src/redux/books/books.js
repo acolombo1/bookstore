@@ -1,11 +1,10 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const ADD_BOOK = 'ADD_BOOK';
 const REM_BOOK = 'REM_BOOK';
 
-let nextId = 0;
-
-export function addBookObject(title, author) {
-  nextId += 1;
-  const data = { id: nextId, title, author };
+export function addBookObject(book) {
+  const data = { id: uuidv4(), title: book.title, author: book.author };
   return { type: ADD_BOOK, payload: data };
 }
 
@@ -13,7 +12,19 @@ export function removeBookObject(id) {
   return { type: REM_BOOK, id };
 }
 
-const bookReducer = (state = [], action) => {
+const initialState = [
+  {
+    id: 1, category: 'Action', title: 'The Hunger Game', author: 'Suzanne Collins',
+  },
+  {
+    id: 2, category: 'Science Fiction', title: 'Dune', author: 'Frank Herbert',
+  },
+  {
+    id: 3, category: 'Economy', title: 'Capital in the 21st Century', author: 'Suzanne Collins',
+  },
+];
+
+const bookReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK:
       return [...state, action.payload];
