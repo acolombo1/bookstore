@@ -6,6 +6,9 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import Cat from './components/Cat';
 import store from './redux/configureStore';
+import { apiGetBooks } from './api';
+
+store.dispatch(apiGetBooks);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

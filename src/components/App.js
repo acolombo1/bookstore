@@ -6,7 +6,6 @@ import MyAddBook from './AddBook';
 
 export default function App() {
   const books = useSelector((state) => state.books, shallowEqual);
-
   return (
     <div className="App">
       <Header />

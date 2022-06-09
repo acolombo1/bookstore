@@ -40,7 +40,6 @@ export const apiGetBooks = async (dispatch) => {
   });
   if (response.ok) {
     const jsonresult = await response.json();
-    console.log('Read: ', jsonresult);
     const books = [];
     let i = 0;
     Object.keys(jsonresult).forEach((key) => {
@@ -51,7 +50,6 @@ export const apiGetBooks = async (dispatch) => {
       books[i].category = '(not specified)';
       i += 1;
     });
-    console.log('Converted to: ', books);
     dispatch({ type: 'GET_BOOKS', payload: books });
   }
 };
