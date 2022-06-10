@@ -27,7 +27,7 @@ const APP_API_KEY = 'Nt5l5M1DZ1GZR2qlCkmu';
 
 export const apiAddBook = (book) => async (dispatch) => {
   // book: {title: 'x', author: 'y'}
-  // needed: { item_id: n, category: '', title: 'x', author: 'y' }
+  // needed: { item_id: 'n', category: '', title: 'x', author: 'y' }
   const bookid = uuidv4();
   dispatch({ type: 'ADD_BOOK', payload: { id: bookid, title: book.title, author: book.author } });
   const bookfull = {

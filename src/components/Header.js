@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <header className="header">
-      <div>BOOKSTORE CMS</div>
+      <div className="BookstoreCMS">Bookstore CMS</div>
       <nav className="nav">
-        <Link to="/">BOOKS</Link>
-        {' '}
-        |
-        {' '}
-        <Link to="/categories">CATEGORIES</Link>
+        <span className="BOOKS">
+          <Link to="/">BOOKS</Link>
+        </span>
+        <span className="CATEGORIES">
+          <Link to="/categories">CATEGORIES</Link>
+        </span>
       </nav>
       <div className="Oval" />
     </header>
