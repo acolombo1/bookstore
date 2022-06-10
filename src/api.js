@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export const initialState = [
   {
     id: 1, category: 'Action', title: 'The Hunger Game', author: 'Suzanne Collins',
@@ -23,15 +25,19 @@ export const apiCreateApp = async () => {
 
 const APP_API_KEY = 'Nt5l5M1DZ1GZR2qlCkmu';
 
-export const apiAddBook = async (book) => {
-  const response = await fetch(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${APP_API_KEY}/books`, {
+export const apiAddBook = (book) => async (dispatch) => {
+  // book: {title: 'x', author: 'y'}
+  // needed: { item_id: n, category: '', title: 'x', author: 'y' }
+  const bookid = uuidv4();
+  dispatch({ type: 'ADD_BOOK', payload: { id: bookid, title: book.title, author: book.author } });
+  const bookfull = {
+    item_id: bookid, category: '', title: book.title, author: book.author,
+  };
+  await fetch(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${APP_API_KEY}/books`, {
     method: 'POST',
-    body: JSON.stringify(book),
+    body: JSON.stringify(bookfull),
     headers: { 'Content-type': 'application/json; charset=UTF-8' },
   });
-  if (response.ok) {
-    // console.log('Added: ', book);
-  }
 };
 
 export const apiGetBooks = async (dispatch) => {
@@ -40,6 +46,8 @@ export const apiGetBooks = async (dispatch) => {
   });
   if (response.ok) {
     const jsonresult = await response.json();
+    // Convert {key1:[{title: x, author: y}], key2: etc } to
+    // [{id: key1, title: x, author: y}, {id: key2, etc}]
     const books = [];
     let i = 0;
     Object.keys(jsonresult).forEach((key) => {
@@ -54,13 +62,11 @@ export const apiGetBooks = async (dispatch) => {
   }
 };
 
-export const apiDelBook = async (itemId) => {
-  const response = await fetch(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${APP_API_KEY}/books/${itemId}`, {
+export const apiDelBook = (itemId) => async (dispatch) => {
+  dispatch({ type: 'REM_BOOK', id: itemId });
+  await fetch(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${APP_API_KEY}/books/${itemId}`, {
     method: 'DELETE',
     body: JSON.stringify({ item_id: itemId }),
     headers: { 'Content-type': 'application/json; charset=UTF-8' },
   });
-  if (response.ok) {
-    // console.log('Deleted: ', itemId);
-  }
 };
