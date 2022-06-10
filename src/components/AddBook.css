@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;600;700;800&display=swap');
+
+.addBook {
+  margin-left: 6.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.formproper {
+  margin-top: 0;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 100px;
+}
+
+.addBook input {
+  margin-top: 0;
+}
+
+#title {
+  width: 28.2rem;
+  height: 1rem;
+  margin: 0 2.125rem 0 0;
+  padding: 0.813rem;
+  border-radius: 4px;
+  border: solid 1px rgb(216, 215, 215);
+  background-color: white;
+  outline: none;
+  font-family: Montserrat, sans-serif;
+  font-size: 1rem;
+  letter-spacing: -0.15px;
+}
+
+#author {
+  width: 16rem;
+  height: 1rem;
+  margin: 0 2.125rem 0 0;
+  padding: 0.813rem;
+  border-radius: 4px;
+  border: solid 1px rgb(216, 215, 215);
+  background-color: white;
+  outline: none;
+  font-family: Montserrat, sans-serif;
+  font-size: 1rem;
+  letter-spacing: -0.15px;
+}
+
+.AddButton {
+  background-color: #0290ff;
+  width: 9rem;
+  height: 2.75rem;
+  padding: 0.801rem 1.188rem 0.886rem 1.375rem;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 0.813rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Titleaddbook {
+  height: 1.5rem;
+  margin: 1.813rem 32.75rem 1.188rem 0;
+  font-family: Montserrat, sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.18px;
+  color: #888;
+}
+
+.CheckButton {
+  background-color: #0290ff;
+  width: 10rem;
+  height: 2.75rem;
+  margin-left: 6.5rem;
+  padding: 0.8rem;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 0.813rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.UC {
+  margin-left: 6.5rem;
+}

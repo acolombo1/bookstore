@@ -9,9 +9,9 @@ function Cat() {
   return (
     <div className="Cat">
       <Header />
-      <button type="button" onClick={() => { dispatch(checkStatus()); }}>Check status</button>
+      <button type="button" className="CheckButton" onClick={() => { dispatch(checkStatus()); }}>CHECK STATUS</button>
       {categories.map((category) => (
-        <p key={category.id}>{category.category}</p>
+        <p className="UC" key={category.id}>{category.category}</p>
       ))}
     </div>
   );

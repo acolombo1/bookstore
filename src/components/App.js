@@ -9,16 +9,18 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      {books.map((book) => (
-        <Book
-          key={book.id}
-          id={book.id}
-          category={book.category}
-          title={book.title}
-          author={book.author}
-        />
-      ))}
-      <MyAddBook />
+      <div className="background">
+        {books.map((book) => (
+          <Book
+            key={book.id}
+            id={book.id}
+            category={book.category}
+            title={book.title}
+            author={book.author}
+          />
+        ))}
+        <MyAddBook />
+      </div>
     </div>
   );
 }
