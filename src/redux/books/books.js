@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const ADD_BOOK = 'ADD_BOOK';
 const REM_BOOK = 'REM_BOOK';
+const GET_BOOKS = 'GET_BOOKS';
 
 export function addBookObject(book) {
   const data = { id: uuidv4(), title: book.title, author: book.author };
@@ -12,20 +13,10 @@ export function removeBookObject(id) {
   return { type: REM_BOOK, id };
 }
 
-const initialState = [
-  {
-    id: 1, category: 'Action', title: 'The Hunger Game', author: 'Suzanne Collins',
-  },
-  {
-    id: 2, category: 'Science Fiction', title: 'Dune', author: 'Frank Herbert',
-  },
-  {
-    id: 3, category: 'Economy', title: 'Capital in the 21st Century', author: 'Suzanne Collins',
-  },
-];
-
-const bookReducer = (state = initialState, action) => {
+const bookReducer = (state = [], action) => {
   switch (action.type) {
+    case GET_BOOKS:
+      return action.payload;
     case ADD_BOOK:
       return [...state, action.payload];
     case REM_BOOK:

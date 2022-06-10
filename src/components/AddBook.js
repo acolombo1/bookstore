@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { addBookObject } from '../redux/books/books';
+import { apiAddBook } from '../api';
 
 function AddBook() {
   const dispatch = useDispatch();
@@ -22,9 +22,8 @@ function AddBook() {
           type="button"
           onClick={() => {
             if (book.title !== '' && book.author !== '') {
-              dispatch(addBookObject(book));
-              book.title = '';
-              book.author = '';
+              dispatch(apiAddBook(book));
+              updateBook({ title: '', author: '' });
             }
           }}
         >
